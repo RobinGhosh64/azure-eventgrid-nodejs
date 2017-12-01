@@ -7,7 +7,7 @@ app.use(bodyParser.json())
 app.post('/event', (req, res) => {
     var header = req.get("Aeg-Event-Type");
     if(header && header === 'SubscriptionValidation'){
-         var event = req.body[0];
+         var event = req.body[0]
          var isValidationEvent = event && event.data && 
                                  event.data.validationCode &&
                                  event.eventType && event.eventType == 'Microsoft.EventGrid.SubscriptionValidationEvent'
@@ -19,7 +19,8 @@ app.post('/event', (req, res) => {
     }
 
     // Do something on other event types 
-    res.send(req.body);
+    console.log(req.body)
+    res.send(req.body)
 })
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
